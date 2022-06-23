@@ -8,9 +8,9 @@ fetch( `${API_URL}/api/casos/`)
     .then((response) => response.json())
     .then((casos) => {
         Array.from(casos).forEach(caso => {
-            let elem = document.createElement('li');
+            let elem = document.createElement('label');
             elem.appendChild(
-                document.createTextNode(`${caso.n}`)
+                document.createTextNode(`${caso.n} ${caso.c} ${caso.m}`)
             );
             ul.appendChild(elem);
         })
@@ -18,6 +18,18 @@ fetch( `${API_URL}/api/casos/`)
        
         HTMLResponse.appendChild(ul);
     })
+
+function asignar(n, c, m){
+    var Dinero = document.getElementById("dinero1")
+    var Chocolate = document.getElementById("chocolate")
+    var Envoltura = document.getElementById("envolturas")
+
+    Dinero.innerText = `Bobby tiene: ${n} dinero`;
+    Chocolate.innerText = `Bobby tiene: ${c} dinero`;
+    Envoltura.innerText = `Bobby tiene: ${m} dinero`;
+}
+
+
 
 
 function chocolateFeast(n, c, m) {
