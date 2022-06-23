@@ -16,7 +16,7 @@
         <h4 class="textos">ama el chocolate. El va frecuentemente a su tienda favorita, si bobby guarda las suficientes envolturas de chocolate el puede conseguir chocolate gratis </h4>
         <div class="infobody">
             <div class="card">
-                <img class="card-img-top" src="./fbc3cf2c3eef6e7f3a4faa436b8eb20b-caracter-de-pluma-de-nino-sonriente.png" alt="">
+                <img class="card-img-top" src="./Niño.png" alt="">
                 <div class="card-body">
                     <h4 class="card-title" >Pequeño Bobby</h4>
                     <p class="card-text" id="dinero1"> Dinero:</p>
@@ -28,15 +28,15 @@
                 <div class="mt-5" id="contenido"></div>
                 <h2 class="area" id=""> Caso 1 </h2>
                 
-                <button class="boton" onclick='traer()'> Establecer </button>
+                <button class="boton" onclick='traer(1)'> Establecer </button>
                 <h2 class="area" id=""> Caso 2 </h2>
                 
-                <button class="boton"  onclick='traer()'> Establecer </button>
+                <button class="boton"  onclick='traer(2)'> Establecer </button>
                 <h2 class="area" id=""> Caso 3 </h2>
                 
-                <button class="boton"  onclick='traer()'> Establecer </button>
+                <button class="boton"  onclick='traer(3)'> Establecer </button>
                 <h2 class="area2" id="calculo"> Se reclamaron n barras de chocolate</h2>
-                <img class="imagen" src="./f2c0d673ee6dc23e91b880e0b39d565e-sparkly-chocolate-bar-flat.png" alt="">
+                <img class="imagen" src="./BarraChocolate.png" alt="">
             </div>
 
         </div>
@@ -49,8 +49,8 @@
     <script>
 
             var contenido = document.querySelector('#contenido')
-        function traer(){
-            fetch('https://chocolatefeast.herokuapp.com/api/casos/1')
+        function traer(caso){
+            fetch(`https://chocolatefeast.herokuapp.com/api/casos/${caso}`)
             .then(res => res.json())
             .then(data => {
                 asignar(data.n, data.c, data.m);
