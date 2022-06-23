@@ -1,9 +1,10 @@
 const API_URL = 'https://chocolatefeast.herokuapp.com';
 
+
 const HTMLResponse = document.querySelector("#dinero1");
 const ul = document.createDocumentFragment();
 
-fetch( `${API_URL}/api/casos/1`)
+fetch( `${API_URL}/api/casos/`)
     .then((response) => response.json())
     .then((casos) => {
         Array.from(casos).forEach(caso => {
@@ -13,7 +14,8 @@ fetch( `${API_URL}/api/casos/1`)
             );
             ul.appendChild(elem);
         })
-
+        console.log(casos)
+       
         HTMLResponse.appendChild(ul);
     })
 
