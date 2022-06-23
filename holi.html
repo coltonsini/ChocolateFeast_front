@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+
     <div class="bodycontainer">
         
         <h1 class="titulos"> El pequeño Bobby </h1>
@@ -23,16 +25,17 @@
                 </div>
             </div>
             <div class="containerinfo">
+                <div class="mt-5" id="contenido"></div>
                 <h2 class="area" id=""> Caso 1 </h2>
                 
-                <button class="boton" onclick='asignar()'> Establecer </button>
+                <button class="boton" onclick='traer()'> Establecer </button>
                 <h2 class="area" id=""> Caso 2 </h2>
                 
-                <button class="boton"  onclick='asignar()'> Establecer </button>
+                <button class="boton"  onclick='traer()'> Establecer </button>
                 <h2 class="area" id=""> Caso 3 </h2>
                 
-                <button class="boton"  onclick='asignar()'> Establecer </button>
-                <h2 class="area2"> Se reclamaron n barras de chocolate</h2>
+                <button class="boton"  onclick='traer()'> Establecer </button>
+                <h2 class="area2" id="calculo"> Se reclamaron n barras de chocolate</h2>
                 <img class="imagen" src="./f2c0d673ee6dc23e91b880e0b39d565e-sparkly-chocolate-bar-flat.png" alt="">
             </div>
 
@@ -43,6 +46,37 @@
     </div>
     
     <script src="script.js" type="module"></script>
+    <script>
+
+            var contenido = document.querySelector('#contenido')
+        function traer(){
+            fetch('https://chocolatefeast.herokuapp.com/api/casos/1')
+            .then(res => res.json())
+            .then(data => {
+                asignar(data.n, data.c, data.m);
+                chocolateFeast(data.n, data.c, data.m);
+            })
+        }
+
+        function chocolateFeast(n, c, m) {
+            var reclamar = document.getElementById("calculo")
+
+            var chocolates = Math.floor(n / c);
+            var resultado = chocolates + Math.floor((chocolates - 1) / (m - 1));
+            
+            reclamar.innerText = `Bobby reclamó: ${resultado} barras de chocolate`;
+        }
+        function asignar(n, c, m){
+            var Dinero = document.getElementById("dinero1")
+            var Chocolate = document.getElementById("chocolate")
+            var Envoltura = document.getElementById("envolturas")
+
+            Dinero.innerText = `Bobby tiene: ${n}$ de dinero`;
+            Chocolate.innerText = `El chocolate vale ${c}$ de dinero`;
+            Envoltura.innerText = `Bobby tiene: ${m} envolturas`;
+        }
+
+    </script>
 </body>
 
 
